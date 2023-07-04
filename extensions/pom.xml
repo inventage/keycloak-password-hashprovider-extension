@@ -18,19 +18,18 @@
     </properties>
 
     <modules>
-        <module>extension-no-op-authenticator</module>
-        <module>extension-no-op-protocol-mapper</module>
+        <module>extension-password-hashprovider</module>
     </modules>
 
-    <dependencies>
-        <!-- the server module must be built for copying the jars into -->
-        <dependency>
-            <groupId>com.inventage.keycloak.custom</groupId>
-            <artifactId>server</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-crypto</artifactId>
+                <version>6.1.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <pluginManagement>
@@ -49,27 +48,31 @@
                         </annotationProcessorPaths>
                     </configuration>
                 </plugin>
-                <!-- deployment configuration for all extension modules -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-antrun-plugin</artifactId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <configuration>
+                        <artifactSet>
+                            <includes>
+                                <include>org.springframework.security</include>
+                            </includes>
+                        </artifactSet>
+                    </configuration>
                     <executions>
                         <execution>
-                            <id>deploy-${project.artifactId}</id>
+                            <id>make-assembly</id>
                             <phase>package</phase>
                             <goals>
-                                <goal>run</goal>
+                                <goal>shade</goal>
                             </goals>
-                            <configuration>
-                                <target>
-                                    <copy file="${file.to.deploy}" todir="${keycloak.providers.dir}"/>
-                                </target>
-                            </configuration>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
 </project>

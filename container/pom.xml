@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>com.inventage.keycloak.custom</groupId>
-            <artifactId>extension-no-op-authenticator</artifactId>
+            <artifactId>extension-password-hashprovider</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -61,7 +61,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <includeArtifactIds>extension-no-op-authenticator,themes</includeArtifactIds>
+                            <includeArtifactIds>extension-hashprovider,themes</includeArtifactIds>
                             <outputDirectory>${project.build.outputDirectory}/keycloak/providers</outputDirectory>
                         </configuration>
                     </execution>

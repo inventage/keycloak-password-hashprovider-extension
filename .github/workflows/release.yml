@@ -1,0 +1,38 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Github Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: "Default version to use when preparing a release."
+        required: true
+        default: "X.Y.Z"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: mvn -B package -P github --file extensions/extension-password-hashprovider/pom.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GHCR_TOKEN }}
+      - name: Release to GitHub releases
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "extensions/extension-password-hashprovider/target/extension-*.jar"
+          body_path: "CHANGELOG.md"
+          fail_on_unmatched_files: true
+          tag_name: v${{ github.event.inputs.releaseVersion }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
