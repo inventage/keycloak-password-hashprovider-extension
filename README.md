@@ -22,7 +22,7 @@ Currently, we support
 
 ## Installation
 
-Our `Keycloak Hashprovider` extension can be downloaded as a Java Archive (jar) and can simply be placed in the
+Our `Keycloak Password Hashprovider` extension can be downloaded as a Java Archive (jar) and can simply be placed in the
 providers directory of your Keycloak.
 
 ## Development
