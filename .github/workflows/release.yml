@@ -22,13 +22,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Generate version with commit hash and date
+      - name: Update POM version with date, build number and commit hash
         run: |
-          echo "version_with_snapshot=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
-          echo "version_number=$(echo ${version_with_snapshot} | sed 's/SNAPSHOT//g')"
-          echo "version=${version_number}$(date +'%yyyy%MM%dd%hh%mm')-{{ github.sha }}" >> $GITHUB_ENV
-      - name: Update POM version
-        run: mvn versions:set -DnewVersion=${version}
+          version_with_snapshot=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          version_number=$(echo "${version_with_snapshot}" | sed 's/SNAPSHOT//g')
+          date=$(date -u +%Y%m%d%H%M)
+          final_version=${version_number}${date}-${{github.run_number}}-${GITHUB_SHA::8}
+          mvn versions:set -DnewVersion=${final_version}
       - name: Build with Maven
         run: mvn -B package -P github --file extensions/extension-password-hashprovider/pom.xml
         env:
