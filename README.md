@@ -42,7 +42,7 @@ project.
 
 ## Sponsors
 
-https://sozialinfo.ch
+[sozialinfo.ch](https://sozialinfo.ch)
 
 ## Support
 
