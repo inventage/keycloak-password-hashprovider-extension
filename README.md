@@ -1,4 +1,4 @@
-Keycloak-hashprovider-extension
+Keycloak-password-hashprovider-extension
 ===============
 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/inventage/keycloak-password-hashprovider-extension?sort=semver)
@@ -11,7 +11,7 @@ Keycloak-hashprovider-extension
 
 ## What is it good for?
 
-The `Keycloak Hashprovider` extension enables Keycloak to support other password hashing algorithm than the
+The `Keycloak Password Hashprovider` extension enables Keycloak to support other password hashing algorithm than the
 built-in [PBKDF2](https://www.keycloak.org/docs/21.1.2/server_admin/#password-policy-types).
 
 Currently, we support
@@ -33,7 +33,7 @@ structured as a multi-module Maven build and contains the following top-level mo
 - config  : provides the build stage configuration and the setup of Keycloak
 - container : creates the custom docker image
 - docker-compose : provides a sample for launching the custom docker image
-- extensions : provides the keycloak hashprovider extension
+- extensions : provides the keycloak password hashprovider extension
 - server : provides a Keycloak installation for local development & testing
 - themes : provides samples for custom themes
 
