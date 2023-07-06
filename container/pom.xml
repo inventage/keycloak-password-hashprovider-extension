@@ -61,7 +61,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <includeArtifactIds>extension-hashprovider,themes</includeArtifactIds>
+                            <includeArtifactIds>extension-password-hashprovider,themes</includeArtifactIds>
                             <outputDirectory>${project.build.outputDirectory}/keycloak/providers</outputDirectory>
                         </configuration>
                     </execution>
