@@ -6,18 +6,18 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class ArgonPasswordHashProviderTest {
+class ArgonPasswordHashProviderTest {
 
     private static ArgonPasswordHashProvider argonPasswordHashProvider;
 
     @BeforeAll
-    public static void init_argon_provider() {
+    static void init_argon_provider() {
         ArgonPasswordHashProviderFactory argonFactory = new ArgonPasswordHashProviderFactory();
         argonPasswordHashProvider = (ArgonPasswordHashProvider) argonFactory.create(null);
     }
 
     @Test
-    public final void valid_argon2i_hashes() {
+    final void valid_argon2i_hashes() {
         //given
         final List<String> argonHashes = List.of("$argon2i$v=19$m=65536,t=16,p=1$bnI2SEl3UXNicmovRTZYdg$MeU+vEnpIQb1q1QiWNiIq70K8hoWWb3gbp1CfqH6jAU",
                 "$argon2i$v=19$m=16,t=2,p=1$SG5lU1J6bVQwQVdqWnJVVg$D4lhpKP+NECizhGS+9uZiA",
@@ -39,7 +39,7 @@ public class ArgonPasswordHashProviderTest {
     }
 
     @Test
-    public final void invalid_argon2i_hashes() {
+    final void invalid_argon2i_hashes() {
         //given
         final List<String> argonHashes = List.of("$argon2i$v=19$m=65536,t=16,p=1$bnI2SEl3UXNicmovRTZYdg$MeU+vEnpIQb1q1QiWNiIq70K8hoWWb3gbp1CfqH6jAU",
                 "$argon2i$v=19$m=16,t=2,p=1$SG5lU1J6bVQwQVdqWnJVVg$D4lhpKP+NECizhGS+9uZiA",

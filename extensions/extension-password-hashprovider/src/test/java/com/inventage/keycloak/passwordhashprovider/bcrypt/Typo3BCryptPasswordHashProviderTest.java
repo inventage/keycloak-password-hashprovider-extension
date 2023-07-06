@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class Typo3BCryptPasswordHashProviderTest {
+class Typo3BCryptPasswordHashProviderTest {
 
     private static Typo3BCryptPasswordHashProvider bCryptPasswordHashProvider;
 
@@ -17,7 +17,7 @@ public class Typo3BCryptPasswordHashProviderTest {
     }
 
     @Test
-    public final void valid_typo3_bcrypt_hashes() {
+    final void valid_typo3_bcrypt_hashes() {
         //given
         final List<String> argonHashes = List.of(
                 "$2y$12$xtQ/70RpLO8pzGQjYjzsmuJ.eFBAFmizDotdHUBKd9.y755qj/OWu",
@@ -36,7 +36,7 @@ public class Typo3BCryptPasswordHashProviderTest {
     }
 
     @Test
-    public final void invalid_typo3_bcrypt_hashes() {
+    final void invalid_typo3_bcrypt_hashes() {
         //given
         final List<String> argonHashes = List.of(
                 "$2y$12$xtQ/70RpLO8pzGQjYjzsmuJ.eFBAFmizDotdHUBKd9.y755qj/OWu",
@@ -55,14 +55,16 @@ public class Typo3BCryptPasswordHashProviderTest {
     }
 
     @Test
-    public final void valid_bcrypt_hashes() {
+    void valid_bcrypt_hashes() {
         //given
         final List<String> argonHashes = List.of(
                 "$2y$12$Q4XG3uE0p.PkqWxbIbWgOeHCdUDSvZjCeCJIioV8eJgsNIJZT73pm",
-                "$2y$12$MFuQnMkf/A5J32FLuXNheOlbPgPnqIKUBT/RsS.rRw.Io2V4SYkmu");
+                "$2y$12$MFuQnMkf/A5J32FLuXNheOlbPgPnqIKUBT/RsS.rRw.Io2V4SYkmu",
+                "$2a$12$JoJiil4yMHIeIDYIBIKYE.PGlgQfEdi3TNTtGm9/y2rrUP4bdoxeW");
         final List<String> passwords = List.of(
                 "sozialinfo",
-                "kevin12345");
+                "kevin12345",
+                "password123");
         for (int i = 0; i < argonHashes.size(); i++) {
             final String bcryptHash = argonHashes.get(i);
             final String password = passwords.get(i);
@@ -74,7 +76,7 @@ public class Typo3BCryptPasswordHashProviderTest {
     }
 
     @Test
-    public final void invalid_bcrypt_hashes() {
+    final void invalid_bcrypt_hashes() {
         //given
         final List<String> argonHashes = List.of(
                 "$2y$12$xtQ/70RpLO8pzGQjYjzsmuJ.eFBAFmizDotdHUBKd9.y755qj/OWu",
