@@ -5,7 +5,7 @@ User Migration Guide
 
 This guide shows you how to migrate users with Argon2 or Bcrypt passwords to Keycloak by accessing the Keycloak admin UI and database. This guide assumes you are using `postgres` as your database, but it should be valid for other databases as well.
 
-Optional: To get a locally running Keycloak instance with a Postgres database, you can simply follow this [tutorial] (https://keycloak.ch/keycloak-tutorials/tutorial-custom-keycloak/) on which this repository is based.
+Optional: To get a locally running Keycloak instance with a Postgres database, you can simply follow this [tutorial](https://keycloak.ch/keycloak-tutorials/tutorial-custom-keycloak/) on which this repository is based.
 
 1. Log in to the keycloak admin ui. 
 2. Create a new user in your desired realm.
