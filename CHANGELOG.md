@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 2.1.0-[Unreleased] - ???
 
+### Changed
+
+- Update `junit` dependency from 4.12 -> 4.13.1 (security vulnerability)
+
 ## [2.0.0]-202307200659-6-d59b2187 2023-07-20
 
 ### Changed
