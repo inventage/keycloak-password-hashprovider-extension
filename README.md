@@ -2,7 +2,7 @@ Keycloak-password-hashprovider-extension
 ===============
 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/inventage/keycloak-password-hashprovider-extension?sort=semver)
-![Keycloak Dependency Version](https://img.shields.io/badge/Keycloak-21.1.2-blue)
+![Keycloak Dependency Version](https://img.shields.io/badge/Keycloak-22.0.0-blue)
 ![GitHub Release Date](https://img.shields.io/github/release-date-pre/inventage/keycloak-password-hashprovider-extension)
 ![Github Last Commit](https://img.shields.io/github/last-commit/inventage/keycloak-password-hashprovider-extension)
 
@@ -12,7 +12,7 @@ Keycloak-password-hashprovider-extension
 ## What is it good for?
 
 The `Keycloak Password Hashprovider` extension enables Keycloak to support other password hashing algorithm than the
-built-in [PBKDF2](https://www.keycloak.org/docs/21.1.2/server_admin/#password-policy-types).
+built-in [PBKDF2](https://www.keycloak.org/docs/22.0.0/server_admin/#password-policy-types).
 
 Currently, we support
 
